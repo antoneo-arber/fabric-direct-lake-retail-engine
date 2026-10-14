@@ -43,20 +43,26 @@ VAR SupplierLeadTime = SELECTEDVALUE('Dim_Supplier'[Lead_Time_Days], 14)
 VAR SafetyStock = [AvgDailySales] * SupplierLeadTime * 0.50
 RETURN
     (AvgDailySales * SupplierLeadTime) + SafetyStock
-```
-Code snippet
+
 // YoY Sales Performance Index
-Sales_YoY_Growth = 
+YoY_Growth = 
 VAR CurrentSales = [Total_Revenue]
 VAR PriorYearSales = CALCULATE([Total_Revenue], SAMEPERIODLASTYEAR('Dim_Date'[Date]))
-RETURN
+RETURN 
     DIVIDE(CurrentSales - PriorYearSales, PriorYearSales, 0)
+```
+---
 
-Metric,Before (Legacy SSAS/Import),After (Microsoft Fabric + Direct Lake),Improvement
-Report Query Render Time,115 Seconds,< 3 Seconds,97.3% Faster
-Dataset Refresh Delay,4-Hour Batch Jobs,Real-Time (Direct Lake),100% Elimination
-Annual Inventory Holding Cost,$4.8M Baseline,$3.6M (Prevented Excess),$1.2M Saved
+## 📈 Quantified Impact
 
-Contact & Enquiries
-Architect: Antoneo Arber
-Email: antoneoarber@gmail.com
+| Metric | Before (Legacy SSAS/Import) | After (Microsoft Fabric + Direct Lake) | Improvement |
+| :--- | :--- | :--- | :--- |
+| **Report Query Render Time** | 115 Seconds | **< 3 Seconds** | **97.3% Faster** |
+| **Dataset Refresh Delay** | 4-Hour Batch Jobs | **Real-Time (Direct Lake)** | **100% Elimination** |
+| **Annual Inventory Holding Cost** | $4.8M Baseline | **$3.6M (Prevented Excess)** | **$1.2M Saved** |
+
+---
+
+## 📬 Contact & Enquiries
+* **Architect:** Antoneo Arber
+* **Email:** antoneoarber@gmail.com
